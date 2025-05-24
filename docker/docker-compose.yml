@@ -23,13 +23,16 @@ services:
     restart: always
     environment:
       - POSTGRES_USER=ibis
-      - POSTGRES_PASSWORD={your-db-password}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # ✅ replace this safely or reference an env variable
       - POSTGRES_DB=ibis
     volumes:
-      - ./volumes/postgres:/var/lib/postgresql/data:Z
+      - postgres_data:/var/lib/postgresql/data
     logging: *default-logging
 
   postfix:
     image: docker.io/mwader/postfix-relay
     restart: always
     logging: *default-logging
+
+volumes:
+  postgres_data:
