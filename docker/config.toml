@@ -2,15 +2,15 @@
 # https://github.com/Nutomic/ibis/blob/master/config/defaults.toml
 
 [federation]
-domain = "{your-domain}"
+domain = "${FEDERATION_DOMAIN}"
 
 [database]
-connection_url = "postgres://ibis:{your-db-password}@postgres:5432/ibis"
+connection_url = "postgres://ibis:${POSTGRES_PASSWORD}@postgres:5432/ibis"
 
 [setup]
-admin_username = "{your-name}"
-admin_password = "{your-password}"
+admin_username = "${ADMIN_USERNAME}"
+admin_password = "${ADMIN_PASSWORD}"
 
 [email]
 connection_url = "smtp://postfix:25"
-from_address = "{email-sender-address}"
+from_address = "${EMAIL_FROM}"
