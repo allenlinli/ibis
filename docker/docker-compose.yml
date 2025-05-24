@@ -14,7 +14,7 @@ services:
     environment:
       - LEPTOS_SITE_ADDR=0.0.0.0:3000
     volumes:
-      - ./config.toml:/config.toml:Z
+      - ./config/config.toml:/config.toml:Z
     depends_on:
       - postgres
 
