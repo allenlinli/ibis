@@ -5,12 +5,12 @@
 domain = "${FEDERATION_DOMAIN}"
 
 [database]
-connection_url = "postgres://ibis:${POSTGRES_PASSWORD}@postgres:5432/ibis"
+connection_url = "postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}"
 
 [setup]
 admin_username = "${ADMIN_USERNAME}"
 admin_password = "${ADMIN_PASSWORD}"
 
-[email]
-connection_url = "smtp://postfix:25"
-from_address = "${EMAIL_FROM}"
+# [email]
+# connection_url = "smtp://postfix:25"
+# from_address = "${EMAIL_FROM}"
