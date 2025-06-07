@@ -15,5 +15,43 @@ services:
       - LEPTOS_SITE_ADDR=0.0.0.0:3000
     volumes:
       - type: bind
-        source: ../config.toml
+        source: ./config.toml
         target: /app/config.toml
+        content: |
+          # See here for all options and documentation:
+          # https://github.com/Nutomic/ibis/blob/master/config/defaults.toml
+
+          [federation]
+          domain = "${FEDERATION_DOMAIN}"
+
+          [database]
+          connection_url = "postgres://ibis:${POSTGRES_PASSWORD}@postgres:5432/ibis"
+
+          [setup]
+          admin_username = "${ADMIN_USERNAME}"
+          admin_password = "${ADMIN_PASSWORD}"
+
+          [email]
+          connection_url = "smtp://postfix:25"
+          from_address = "${EMAIL_FROM}"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: docker.io/pgautoupgrade/pgautoupgrade:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=ibis
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=ibis
+    volumes:
+      - type: bind
+        source: ./volumes/postgres
+        target: /var/lib/postgresql/data
+        is_directory: true
+    logging: *default-logging
+
+  postfix:
+    image: docker.io/mwader/postfix-relay
+    restart: always
+    logging: *default-logging
