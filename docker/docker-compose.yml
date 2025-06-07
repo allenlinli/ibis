@@ -6,7 +6,9 @@ x-logging: &default-logging
 
 services:
   ibis:
-    build: .
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
     ports:
       - "3000:3000"
     restart: always
