@@ -2,15 +2,15 @@
 # https://github.com/Nutomic/ibis/blob/master/config/defaults.toml
 
 [federation]
-domain = "{your-domain}"
+domain = "ibis.allenlinli.com"
 
 [database]
-connection_url = "postgres://ibis:{your-db-password}@postgres:5432/ibis"
+connection_url = "postgresql://postgres:{your-db-password}@{container-name-on-coolify; e.g.:p8s0gc4sos0o8kkos0ggokws}:5432/postgres"
 
 [setup]
-admin_username = "{your-name}"
-admin_password = "{your-password}"
+admin_username = "allenlinli"
+admin_password = {password}
 
 [email]
 connection_url = "smtp://postfix:25"
-from_address = "{email-sender-address}"
+from_address = "allenlinli"
