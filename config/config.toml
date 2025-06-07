@@ -1,4 +1,16 @@
-domain = "127.0.0.1:3000"
+# See here for all options and documentation:
+# https://github.com/Nutomic/ibis/blob/master/config/defaults.toml
 
 [federation]
-domain = "ibis-alpha:3000"
+domain = "${FEDERATION_DOMAIN}"
+
+[database]
+connection_url = "postgres://ibis:${POSTGRES_PASSWORD}@postgres:5432/ibis"
+
+[setup]
+admin_username = "${ADMIN_USERNAME}"
+admin_password = "${ADMIN_PASSWORD}"
+
+[email]
+connection_url = "smtp://postfix:25"
+from_address = "${EMAIL_FROM}"
