@@ -1,1 +1,4 @@
-config/config.toml
+domain = "127.0.0.1:3000"
+
+[federation]
+domain = "ibis-alpha:3000"
