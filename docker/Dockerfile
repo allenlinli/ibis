@@ -33,7 +33,7 @@ RUN groupadd -g ${GID} -o ${UNAME} && \
 USER $UNAME
 
 COPY --from=builder /app/target/release/ibis /usr/local/bin/ibis
-COPY docker/config.toml /app/config.toml
+COPY config.toml /app/config.toml
 
 ENTRYPOINT ["ibis", "--config", "/app/config.toml"]
 EXPOSE 3000
