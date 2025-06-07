@@ -10,10 +10,9 @@ services:
     ports:
       - "3000:3000"
     restart: always
-    working_dir: /
     logging: *default-logging
     environment:
       - LEPTOS_SITE_ADDR=0.0.0.0:3000
     volumes:
-      - ./config/config.toml:/config.toml
-      - ./config/config.toml:/app/config.toml
+      - ./config/config.toml:/my-config.toml
+    command: ["ibis", "--config", "/my-config.toml"]
